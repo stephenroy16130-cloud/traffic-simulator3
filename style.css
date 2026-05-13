@@ -31,7 +31,7 @@ body {
     min-height: 100vh;
     color: var(--text);
     user-select: none;
-    overflow: hidden;
+    overflow: auto;
     position: relative;
 }
 
@@ -294,4 +294,15 @@ h1 {
     .light { width: 70px; height: 70px; }
     .light-inner { width: 34px; height: 34px; }
     .btn-primary { padding: 12px 24px; font-size: 0.9rem; }
+}
+
+@media (max-height: 700px) {
+    .container {
+        transform: scale(0.85);
+    }
+}
+@media (max-height: 550px) {
+    .container {
+        transform: scale(0.7);
+    }
 }
