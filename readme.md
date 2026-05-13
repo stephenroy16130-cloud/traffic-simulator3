@@ -3,8 +3,6 @@
 A modern, interactive traffic light simulator built with vanilla HTML, CSS, and JavaScript.  
 Click a button → a random light activates → the console shows the full instruction.
 
-![Dark premium traffic light UI](screenshot.png)
-
 ---
 
 ## ✨ Features
