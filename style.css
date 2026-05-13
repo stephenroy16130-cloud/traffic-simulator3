@@ -1,0 +1,192 @@
+:root {
+    --bg: #0f0f13;
+    --surface: #1a1a24;
+    --text: #e0e0e0;
+    --red-glow: #ff3b3b;
+    --yellow-glow: #ffb300;
+    --green-glow: #00e64d;
+    --red-off: #2e1515;
+    --yellow-off: #2e260a;
+    --green-off: #0a2a14;
+    --btn-bg: #2a2a38;
+    --btn-hover: #3a3a4c;
+    --border-radius: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text);
+    user-select: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, #ffffff 20%, #b0b0d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #7a7a8c;
+    margin-top: 6px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.traffic-light {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface);
+    padding: 24px 20px;
+    border-radius: 32px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.light {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+    position: relative;
+    cursor: default;
+}
+
+.light::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border-radius: inherit;
+    background: radial-gradient(circle at 50% 35%, rgba(255,255,255,0.08) 0%, transparent 70%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.light-inner {
+    width: 48px;
+    height: 48px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.25;
+    transform: scale(0.9);
+    transition: inherit;
+}
+
+.light-inner .icon {
+    width: 100%;
+    height: 100%;
+}
+
+.red {
+    background: var(--red-off);
+    color: #ffffff;
+}
+.yellow {
+    background: var(--yellow-off);
+    color: #1a1a1a;
+}
+.green {
+    background: var(--green-off);
+    color: #ffffff;
+}
+
+/* Active states */
+.red.active {
+    background: radial-gradient(circle at 50% 40%, #ff5e5e 0%, #d00000 100%);
+    box-shadow: 0 0 30px var(--red-glow), 0 0 60px rgba(255, 50, 50, 0.4);
+}
+.yellow.active {
+    background: radial-gradient(circle at 50% 40%, #ffe066 0%, #e69500 100%);
+    box-shadow: 0 0 30px var(--yellow-glow), 0 0 60px rgba(255, 180, 0, 0.4);
+}
+.green.active {
+    background: radial-gradient(circle at 50% 40%, #5eff7e 0%, #00b32c 100%);
+    box-shadow: 0 0 30px var(--green-glow), 0 0 60px rgba(0, 230, 80, 0.4);
+}
+
+.active .light-inner {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.7));
+}
+
+#simulateBtn {
+    background: var(--btn-bg);
+    color: #ffffff;
+    border: none;
+    padding: 14px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    text-transform: uppercase;
+}
+
+#simulateBtn:hover {
+    background: var(--btn-hover);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    transform: translateY(-2px);
+}
+
+#simulateBtn:active {
+    transform: translateY(0);
+}
+
+.console-hint {
+    font-size: 0.8rem;
+    color: #5a5a6e;
+    margin-top: -8px;
+}
+
+@media (max-width: 480px) {
+    .traffic-light {
+        padding: 18px 14px;
+        gap: 12px;
+    }
+    .light {
+        width: 72px;
+        height: 72px;
+    }
+    .light-inner {
+        width: 36px;
+        height: 36px;
+    }
+    h1 {
+        font-size: 1.6rem;
+    }
+}
